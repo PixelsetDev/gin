@@ -1,0 +1,32 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
+
+@import "nativewind/theme";
+
+/* Layouts */
+.nav { @apply font-bold bg-rose-500; }
+.header { @apply bg-rose-500 padding-lg; }
+@utility padding-lg { @apply px-6 sm:px-12 md:px-24 lg:px-48 py-3 sm:py-6 md:py-12 lg:py-24 }
+@utility padding { @apply px-2 sm:px-4 md:px-8 lg:px-16 py-1 sm:py-2 md:py-4 lg:py-8 }
+@utility padding-sm { @apply px-2 sm:px-4 md:px-8 lg:px-12 py-1 sm:py-2 md:py-4 lg:py-6 }
+
+/* Grid */
+.gap-std { @apply gap-4 }
+.grid-2 { @apply grid md:grid-cols-2 }
+
+/* Text Sizes */
+.txt-6xl { @apply text-6xl sm:text-5xl md:text-6xl lg:text-7xl font-bold; }
+.txt-base { @apply text-base sm:text-lg md:text-xl lg:text-2xl; }
+@utility txt-sm { @apply text-sm sm:text-base md:text-lg lg:text-xl; }
+
+/* Input Box */
+.input { @apply rounded-md border dark:border-neutral-900 dark:bg-neutral-700 bg-neutral-100 bg-neutral-300 appearance-none px-2 py-1 }
+
+/* Alerts */
+.alert-red { @apply border-2 border-red-500 bg-red-200 dark:bg-red-800 padding-sm; }
+.alert-text-red { @apply text-red-900 dark:text-red-100 text-center txt-sm; }
+
+/* Buttons */
+.btn { @apply px-4 py-2 rounded transition duration-200 }
+.btn-neutral { @apply bg-neutral-300 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800}

@@ -1,5 +1,7 @@
-import { Slot } from 'expo-router';
+import {Slot, useRouter} from 'expo-router';
 import * as Sentry from '@sentry/react-native';
+import {useEffect} from "react";
+import env from "@/env";
 
 //   ██████  ██████  ██      ██
 //   ██        ██    ████    ██
@@ -18,6 +20,18 @@ Sentry.init({
     integrations: [Sentry.mobileReplayIntegration(), Sentry.feedbackIntegration()],
 });
 
-export default Sentry.wrap(() => (
-    <Slot />
-));
+export default Sentry.wrap(() => {
+    const router = useRouter();
+    useEffect(() => {
+        fetch(`https://${env.API_BASE}/status`)
+            .then(response => {
+                if (response.status === 200) {
+                    router.push('/menu');
+                } else {
+                    router.push('/noconnection');
+                }
+            })
+}, []);
+
+    return <Slot />;
+});

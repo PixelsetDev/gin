@@ -1,5 +1,3 @@
-import { Disclaimer } from "@/components/Disclaimer";
-import "./../assets/css/styles.css"
 import {ScrollView, Text, View} from "react-native";
 
 export default function App() {

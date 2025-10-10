@@ -1,25 +1,16 @@
-import { Disclaimer } from "@/components/Disclaimer";
-import {View} from "react-native";
-import "./../assets/css/styles.css";
-import {useEffect} from "react";
-import SocketIOClient from "socket.io-client";
+import {View, Text, ScrollView} from "react-native";
 
 export default function App() {
-    useEffect(() => {
-        const socket = SocketIOClient("wss://d3-pre-api.pixelset.dev/", {});
-        socket.on("connect", () => {
-            console.log("connected");
-            socket.emit("hello", "world");
-        });
-
-        socket.on("connect_error", (err) => {
-            console.log(err.message);
-        });
-    }, []);
-
-    return <View>
-        <View nativeID={`screen`}>
-            <Disclaimer/>
-        </View>
-    </View>;
+    return (
+        <ScrollView className={`grid gap-std`}>
+            <View className={`header`}>
+                <Text>Drinko!</Text><Text className={`align-super`}>3</Text>
+            </View>
+            <View className="padding text-center">
+                <Text className="text-header-lg mb-6">
+                    Loading...
+                </Text>
+            </View>
+        </ScrollView>
+    );
 }
