@@ -27,3 +27,6 @@ You can modify Gin as long as you follow the terms of the Apache 2.0 license.
 
 We use NativeWind (TailwindCSS v4) for the CSS for Gin and JetBrains WebStorm for development.
 NativeWind automatically compiles when you run the build command.
+
+## Issues
+Issues in this repository are for frontend issues only. For backend issues please open an issue at [Vodka](https://github.com/pixelsetdev/vodka)'s repository.
