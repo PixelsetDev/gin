@@ -5,7 +5,9 @@
 @import "nativewind/theme";
 
 /* Layouts */
-.nav { @apply font-bold bg-rose-500; }
+body { @apply dark:bg-neutral-900 dark:text-white; }
+.card { @apply bg-neutral-100 dark:bg-black dark:text-white; }
+.nav { @apply txt-bold bg-rose-500; }
 .header { @apply bg-rose-500 padding-lg; }
 @utility padding-lg { @apply px-6 sm:px-12 md:px-24 lg:px-48 py-3 sm:py-6 md:py-12 lg:py-24 }
 @utility padding { @apply px-2 sm:px-4 md:px-8 lg:px-16 py-1 sm:py-2 md:py-4 lg:py-8 }
@@ -14,11 +16,16 @@
 /* Grid */
 .gap-std { @apply gap-4 }
 .grid-2 { @apply grid md:grid-cols-2 }
+.span-2 { @apply md:col-span-2 }
 
 /* Text Sizes */
-.txt-6xl { @apply text-6xl sm:text-5xl md:text-6xl lg:text-7xl font-bold; }
-.txt-base { @apply text-base sm:text-lg md:text-xl lg:text-2xl; }
-@utility txt-sm { @apply text-sm sm:text-base md:text-lg lg:text-xl; }
+.txt-6xl { @apply txt text-6xl sm:text-7xl md:text-8xl lg:text-9xl; }
+.txt-4xl { @apply txt text-4xl sm:text-5xl md:text-6xl lg:text-7xl; }
+.txt-xl { @apply txt text-xl sm:text-2xl md:text-3xl lg:text-4xl; }
+.txt-base { @apply txt text-base sm:text-lg md:text-xl lg:text-2xl; }
+@utility txt-sm { @apply txt text-sm sm:text-base md:text-lg lg:text-xl; }
+@utility txt { @apply dark:text-white; font-family: "Gilroy-Light", sans-serif; }
+@utility txt-bold { @apply txt; font-family: "Gilroy-ExtraBold", sans-serif !important; }
 
 /* Input Box */
 .input { @apply rounded-md border dark:border-neutral-900 dark:bg-neutral-700 bg-neutral-100 bg-neutral-300 appearance-none px-2 py-1 }
@@ -28,5 +35,29 @@
 .alert-text-red { @apply text-red-900 dark:text-red-100 text-center txt-sm; }
 
 /* Buttons */
-.btn { @apply px-4 py-2 rounded transition duration-200 }
-.btn-neutral { @apply bg-neutral-300 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800}
+.btn { @apply px-4 py-2 rounded transition duration-200 cursor-pointer dark:text-white; }
+.btn-neutral { @apply bg-neutral-300 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800; }
+.btn-green { @apply bg-green-300 hover:bg-green-200 dark:bg-green-900 dark:hover:bg-green-800; }
+.btn-rose { @apply bg-rose-300 hover:bg-rose-200 dark:bg-rose-900 dark:hover:bg-rose-800; }
+
+/* Fonts */
+@font-face {
+    font-family: 'Gilroy-ExtraBold';
+    src: url('/fonts/Gilroy-Extrabold.eot');
+    src: local('Gilroy Extrabold'), local('Gilroy-Extrabold'),
+    url('/fonts/Gilroy-Extrabold.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Gilroy-Extrabold.woff') format('woff'),
+    url('/fonts/Gilroy-Extrabold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Gilroy-Light';
+    src: url('/fonts/Gilroy-Light.eot');
+    src: local('Gilroy Light'), local('Gilroy-Light'),
+    url('/fonts/Gilroy-Light.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Gilroy-Light.woff') format('woff'),
+    url('/fonts/Gilroy-Light.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
