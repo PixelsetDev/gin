@@ -30,10 +30,10 @@ export const Disclaimer = () => {
                     This game will get you drunk. Always drink responsibly. When the fun stops, stop.
                 </Text>
                 <Text className="btn btn-green">
-                    Let's go!
+                    Let&#39;s go!
                 </Text>
                 <Text className="absolute bottom-0 left-0">V3.0.0-BETA</Text>
-                <a href="/select"
+                <a href="/old"
                    className="absolute bottom-0 right-0 text-center underline">Play older versions of Drinko!</a>
             </View>
         </ScrollView>

@@ -2,6 +2,15 @@
   "name": "gin",
   "main": "expo-router/entry",
   "version": "0.1.0",
+  "author": "Lewis Milburn <lewis@pixelset.dev>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PixelsetDev/vodka.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PixelsetDev/vodka/issues"
+  },
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
@@ -38,7 +47,8 @@
     "react-native-safe-area-context": "~5.6.0",
     "react-native-screens": "~4.16.0",
     "react-native-web": "~0.21.0",
-    "react-native-worklets": "0.5.1"
+    "react-native-worklets": "0.5.1",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
