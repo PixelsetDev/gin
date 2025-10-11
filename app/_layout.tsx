@@ -1,7 +1,5 @@
-import {Slot, useRouter} from 'expo-router';
+import {Slot} from 'expo-router';
 import * as Sentry from '@sentry/react-native';
-import {useEffect} from "react";
-import env from "@/env";
 
 //   ██████  ██████  ██      ██
 //   ██        ██    ████    ██

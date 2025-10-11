@@ -4,7 +4,6 @@ import {useEffect, useState} from "react";
 import env from "@/env";
 
 export default function App() {
-    const router = useRouter();
     const [Loaded, setLoaded] = useState(0);
     useEffect(() => {
         fetch(`https://${env.API_BASE}/status`)

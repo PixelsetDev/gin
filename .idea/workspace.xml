@@ -4,29 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed50632e-0119-4fe9-aa60-f04e4acf577b" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/public/fonts/Gilroy-Extrabold.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/Gilroy-Extrabold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/Gilroy-Extrabold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/Gilroy-Light.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/Gilroy-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/Gilroy-Light.woff" afterDir="false" />
+    <list default="true" id="ed50632e-0119-4fe9-aa60-f04e4acf577b" name="Changes" comment="Update UI">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/play.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/about.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/about.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/noconnection.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/android-icon-background.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/android-icon-background.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/android-icon-foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/android-icon-foreground.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/android-icon-monochrome.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/android-icon-monochrome.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/favicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/favicon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/partial-react-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/partial-react-logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/react-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/react-logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/react-logo@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/react-logo@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/react-logo@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/react-logo@3x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/splash-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/splash-icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/old.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/old.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +66,7 @@
     "git-widget-placeholder": "main",
     "javascript.nodejs.core.library.configured.version": "22.20.0",
     "javascript.nodejs.core.library.typings.version": "22.18.8",
-    "last_opened_file_path": "/Users/lewis/NoCloud/drinko3/public/fonts",
+    "last_opened_file_path": "/Users/lewis/NoCloud/drinko3/app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -92,9 +83,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/public/fonts" />
       <recent name="$PROJECT_DIR$/assets/fonts" />
-      <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/screens" />
       <recent name="$PROJECT_DIR$/components" />
     </key>
@@ -155,7 +146,7 @@
       <workItem from="1759822156247" duration="1257000" />
       <workItem from="1759828592953" duration="8456000" />
       <workItem from="1760045888947" duration="432000" />
-      <workItem from="1760094465175" duration="14351000" />
+      <workItem from="1760094465175" duration="28978000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <option name="closed" value="true" />
@@ -197,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760114591086</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Update UI">
+      <option name="closed" value="true" />
+      <created>1760134382321</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1760134382321</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,6 +206,7 @@
     <MESSAGE value="Initial commit." />
     <MESSAGE value="Gin" />
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="Update UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update UI" />
   </component>
 </project>
