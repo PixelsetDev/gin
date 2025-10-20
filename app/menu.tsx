@@ -40,10 +40,13 @@ export default function App() {
             .then(res => res.json())
             .then(res => {
                 if (res.code === 401) {
-                    alert(`Your login session may have expired. Please login again (E4/${res.code})`);
+                    alert(`Your login session may have expired. Please login again (E4/401)`);
                     router.push("/menu");
                 } else if (res.code === 201) {
-                    router.push("/play");
+                    router.push(`/play?game=${res.data}`);
+                } else if (res.code === 403) {
+                    alert(`You don't own the pack that you have selected. Please select another pack and try again. (E4/403)`);
+                    console.error(res)
                 } else {
                     alert(`Sorry, something went wrong. Please try again later (E4/${res.code})`)
                     console.error(res)

@@ -30,10 +30,10 @@ export default function App() {
                     We&apos;re open source!
                 </Text>
                 <Text className="txt-base">
-                    Gin (Website &amp; App): <Link href={`https://github.com/pixelset/gin`} className={`link-inline`}>https://github.com/pixelset/gin</Link>
+                    Gin (Website &amp; App): <Link href={`https://github.com/pixelsetdev/gin`} className={`link-inline`}>https://github.com/pixelsetdev/gin</Link>
                 </Text>
                 <Text className="txt-base">
-                    Vodka (Server/API): <Link href={`https://github.com/pixelset/vodka`} className={`link-inline`}>https://github.com/pixelset/vodka</Link>
+                    Vodka (Server/API): <Link href={`https://github.com/pixelsetdev/vodka`} className={`link-inline`}>https://github.com/pixelsetdev/vodka</Link>
                 </Text>
             </View>
             <View className="padding-sm card text-center grid-1">
