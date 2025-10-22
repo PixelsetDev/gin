@@ -35,6 +35,7 @@ export default function App() {
             body: JSON.stringify({
                 mode: Mode,
                 packs: [packID],
+                players: Players,
             })
         })
             .then(res => res.json())
@@ -43,18 +44,38 @@ export default function App() {
                     alert(`Your login session may have expired. Please login again (E4/401)`);
                     router.push("/menu");
                 } else if (res.code === 201) {
-                    router.push(`/play?game=${res.data}`);
+                    let gameCode = res.data;
+                    router.push({
+                        pathname: `/play`,
+                        params: {game: gameCode}
+                    });
                 } else if (res.code === 403) {
                     alert(`You don't own the pack that you have selected. Please select another pack and try again. (E4/403)`);
                     console.error(res)
                 } else {
-                    alert(`Sorry, something went wrong. Please try again later (E4/${res.code})`)
-                    console.error(res)
+                    router.push({
+                        pathname: `/error`,
+                        params: {
+                            code: res.code,
+                            error: res.message,
+                            description: "Please try again or contact support for assistance.",
+                            elFile: 'menu.tsx',
+                            elFunc: 'createGame'
+                        }
+                    });
                 }
             })
             .catch(err => {
-                alert("Sorry, something went wrong. Please try again later (E3)")
-                console.error(err)
+                router.push({
+                    pathname: `/error`,
+                    params: {
+                        code: err.code,
+                        error: err.message,
+                        description: "Please try again or contact support for assistance.",
+                        elFile: 'menu.tsx',
+                        elFunc: 'createGame'
+                    }
+                });
             })
     }
 
@@ -86,20 +107,45 @@ export default function App() {
                             if (json.code === 200) {
                                 setPacks(json.data);
                             } else {
-                                alert("Unable to load packs. Please try again later.")
+                                router.push({
+                                    pathname: `/error`,
+                                    params: {
+                                        code: "D1",
+                                        error: "Unable to load packs.",
+                                        description: "Unable to load packs. Please try again or contact support for assistance.",
+                                        elFile: 'menu.tsx',
+                                        elFunc: 'useEffect'
+                                    }
+                                });
                             }
                         })
                         .catch((err) => {
-                            console.error(err);
-                            alert("Unable to load packs. Please try again later (E1)");
+                            router.push({
+                                pathname: `/error`,
+                                params: {
+                                    code: err.code,
+                                    error: err.message,
+                                    description: "Unable to load packs. Please try again or contact support for assistance.",
+                                    elFile: 'menu.tsx',
+                                    elFunc: 'useEffect'
+                                }
+                            });
                         });
                 } else {
                     setAuthenticated(false);
                 }
             })
             .catch((err) => {
-                console.error(err);
-                alert("Unable to load. Please try again later (E2)")
+                router.push({
+                    pathname: `/error`,
+                    params: {
+                        code: err.code,
+                        error: err.message,
+                        description: "Unable to load packs. Please try again or contact support for assistance.",
+                        elFile: 'menu.tsx',
+                        elFunc: 'useEffect'
+                    }
+                });
             });
     }, []);
     return <ScrollView className={`grid gap-std`}>
@@ -121,7 +167,17 @@ export default function App() {
                                     </Text>
                                 </Pressable>
                                 <Pressable className={`btn-lg btn-neutral txt-base text-center grid gap-std`} onPress={() => {
-                                    setMode(2); setDisplay(2);
+                                    setMode(2); setDisplay(2)
+                                    router.push({
+                                        pathname: `/error`,
+                                        params: {
+                                            code: "451",
+                                            error: "Unavailable For Legal Reasons",
+                                            description: "Due to legal issues, this function is not available in your country or region. Please contact support for assistance.",
+                                            elFile: 'menu.tsx',
+                                            elFunc: 'render(root)'
+                                        }
+                                    });;
                                 }}>
                                     <Text className={`text-center txt-2xl dark:text-white txt-bold`}>Multi-Device</Text>
                                     <Text className={`text-center txt-xl dark:text-white`}>
@@ -138,6 +194,7 @@ export default function App() {
                                 <View className={`flex-row gap-std`}>
                                     <TextInput
                                         className={`input txt-base flex-grow`}
+                                        value={CurrentPlayerInput}
                                         onChangeText={newText => setPlayerInput(newText)}
                                     />
                                     <Pressable className={`btn btn-neutral txt-base text-center grid`} onPress={() => addPlayer(CurrentPlayerInput)}>
