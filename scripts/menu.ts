@@ -1,7 +1,12 @@
 import env from "@/env";
 import {router} from "expo-router";
 
-export function createGame(packID: number, Mode: number, Players: string[]) {
+export function createGame(packID: number, Mode: number, Players: string[], Status: number) {
+    if (Status === 0) {
+        alert(`This pack isn't available yet. Please check back later.`);
+        return;
+    }
+
     fetch(`https://${env.API_BASE}/game`, {
         method: "POST",
         credentials: 'include',

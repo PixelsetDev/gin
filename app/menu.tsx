@@ -155,51 +155,66 @@ export default function App() {
                             </View>
                         ) : Display === -1 ? (
                             <View className={`grid gap-std`}>
-                                <Text className={`txt-xl text-center txt-bold`}>Select a Pack</Text>
                                 <Text className="text-center txt-base">
                                     {Players.length > 0 ? "Playing with "+Players.join(", ")+" in Big Screen mode." : "Playing on Multi-Device mode."}
                                 </Text>
-                                <View className={`grid-2 gap-std`}>
+
+                                <Text className={`txt-xl text-center txt-bold pt-8 pb-4`}>Your Packs</Text>
+                                <View className={`grid-4 gap-std`}>
                                     {Packs !== null ? (Packs.map(pack =>
-                                        pack !== null ? (
-                                            pack.status === 0 ? (
-                                                pack.owns ? (
-                                                    <View key={`pack-${pack.id}`} className={`btn btn-neutral-disabled`}>
-                                                        <Image source={{ uri: `https://${env.API_BASE}/${pack.id}.png` }} />
-                                                        <Text className={`txt-base txt-bold`}>{pack.name}</Text>
-                                                        <Text className={`txt-sm`}>{pack.description}</Text>
-                                                        <Text className={`txt-sm italic txt-bold`}>Coming soon. You own this pack on pre-order.</Text>
-                                                    </View>
-                                                ) : (
-                                                    <View key={`pack-${pack.id}`} className={`btn btn-neutral-disabled`}>
-                                                        <Image source={{ uri: `https://${env.API_BASE}/${pack.id}.png` }} />
-                                                        <Text className={`txt-base txt-bold`}>{pack.name}</Text>
-                                                        <Text className={`txt-sm`}>{pack.description}</Text>
-                                                        <Text className={`txt-sm italic txt-bold`}>Coming soon.</Text>
-                                                    </View>
-                                                )
-                                            ) : pack.owns ? (
-                                                <Pressable onPress={() => createGame(pack.id, Mode, Players)} key={`pack-${pack.id}`} className={`btn btn-green`}>
-                                                    <Image source={{ uri: `https://${env.API_BASE}/${pack.id}.png` }} />
-                                                    <Text className={`txt-base txt-bold`}>{pack.name}</Text>
-                                                    <Text className={`txt-sm`}>{pack.description}</Text>
-                                                </Pressable>
-                                            ) : (
-                                                <View key={`pack-${pack.id}`} className={`btn btn-neutral-disabled`}>
-                                                    <Image source={{ uri: `https://${env.API_BASE}/${pack.id}.png` }} />
-                                                    <Text className={`txt-base font-bold`}>{pack.name}</Text>
-                                                    <Text className={`txt-sm`}>{pack.description}</Text>
-                                                    <Text className={`txt-sm italic txt-bold`}>You don&apos;t own this pack.</Text>
+                                        pack !== null && (pack.owns || pack.all_owns) && (
+                                            <Pressable onPress={() => createGame(pack.id, Mode, Players, pack.status)} key={`pack-${pack.id}`} className={`max-w-72 btn-card btn-neutral`}>
+                                                <Image source={{ uri: `https://${env.API_BASE}/static/pack-icons/${pack.id}.png` }} className={`w-full h-32`} />
+                                                { pack.all_owns && pack.status === 0 ? (
+                                                    <Text className={`bg-yellow-600 text-white text-center py-1 txt-sm`}>Coming Soon (Free pack)</Text>
+                                                ) : pack.all_owns && pack.status === 1 ? (
+                                                    <Text className={`bg-green-700 text-white text-center py-1 txt-sm`}>Free pack</Text>
+                                                ) : pack.status === 0 ? (
+                                                    <Text className={`bg-yellow-600 text-white text-center py-1 txt-sm`}>Coming Soon (Pre-ordered)</Text>
+                                                ) : pack.status === 1 && (
+                                                    <Text className={`bg-green-700 text-white text-center py-1 txt-sm`}>You own this pack</Text>
+                                                )}
+                                                <View className={`btn-card-content`}>
+                                                    <Text className={`txt-base txt-bold text-center`}>{pack.name}</Text>
+                                                    <Text className={`txt-sm text-center`}>{pack.description}</Text>
                                                 </View>
-                                            )
-                                        ) : (
-                                            <Text key={`pack-?`}>Unknown pack.</Text>
+                                            </Pressable>
                                         )
                                     )) : (
-                                        <Text>There was a problem loading packs, please try again later.</Text>
+                                        <Text className={`dark:text-white`}>There was a problem loading packs, please try again later.</Text>
                                     )}
-                                    <Pressable onPress={() => setDisplay(1)} className={`btn btn-rose span-2`}>
+                                    <Text className={`flex-grow`}>&nbsp;</Text>
+                                </View>
+                                <View className={`bg-rose-200 dark:bg-black pt-8 px-4 pb-4 my-8 shadow-lg`}>
+                                    <Text className={`txt-xl text-center txt-bold pb-4`}>Looking for more?</Text>
+                                    <View className={`flex-row gap-std overflow-x-scroll px-4`}>
+                                        {Packs !== null ? (Packs.map(pack =>
+                                            pack !== null && (!pack.owns && !pack.all_owns) && (
+                                                <Pressable onPress={() => createGame(pack.id, Mode, Players, pack.status)} key={`pack-${pack.id}`} className={`mb-4 max-w-72 btn-card btn-neutral`}>
+                                                    <Image source={{ uri: `https://${env.API_BASE}/static/pack-icons/${pack.id}.png` }} className={`w-full h-32`} />
+                                                    {pack.status === 0 ? (
+                                                        <Text className={`bg-yellow-600 text-white text-center py-1 txt-sm`}>Coming soon</Text>
+                                                    ) : pack.status === 1 && (
+                                                        <Text className={`bg-red-700 text-white text-center py-1 txt-sm`}>Buy for £1.99</Text>
+                                                    )}
+                                                    <View className={`p-2`}>
+                                                        <Text className={`txt-sm txt-bold text-center`}>{pack.name}</Text>
+                                                        <Text className={`txt-xs text-center`}>{pack.description}</Text>
+                                                    </View>
+                                                </Pressable>
+                                            )
+                                        )) : (
+                                            <Text className={`dark:text-white`}>There was a problem loading packs, please try again later.</Text>
+                                        )}
+                                        <Text className={`flex-grow`}>&nbsp;</Text>
+                                    </View>
+                                </View>
+                                <View className={`grid-2 pt-8 gap-std`}>
+                                    <Pressable onPress={() => setDisplay(1)} className={`btn btn-red`}>
                                         <Text className={`txt-sm text-center`}>&lt; Go back</Text>
+                                    </Pressable>
+                                    <Pressable onPress={() => alert('Not implemented, please click a pack.')} className={`btn btn-green`}>
+                                        <Text className={`txt-sm text-center`}>Start game &gt;</Text>
                                     </Pressable>
                                 </View>
                             </View>

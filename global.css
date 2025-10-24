@@ -18,8 +18,10 @@ body { @apply dark:bg-neutral-900 dark:text-white; }
 .gap-sm { @apply gap-2 }
 .gap-lg { @apply gap-12 }
 .grid-1 { @apply grid }
-.grid-2 { @apply grid md:grid-cols-2 }
-.span-2 { @apply md:col-span-2 }
+.grid-2 { @apply grid grid-cols-2 }
+.span-2 { @apply col-span-2 }
+.grid-4 { @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 }
+.span-4 { @apply col-span-2 md:col-span-3 lg:col-span-4 }
 
 /* Text Sizes */
 .txt-6xl { @apply txt text-6xl sm:text-7xl md:text-8xl lg:text-9xl; }
@@ -28,6 +30,7 @@ body { @apply dark:bg-neutral-900 dark:text-white; }
 .txt-xl { @apply txt text-xl sm:text-2xl md:text-3xl lg:text-4xl; }
 .txt-base { @apply txt text-base sm:text-lg md:text-xl lg:text-2xl; }
 .txt-sm { @apply txt text-sm sm:text-base md:text-lg lg:text-xl; }
+.txt-xs { @apply txt text-xs sm:text-sm md:text-base lg:text-lg; }
 @utility txt-sm { @apply txt text-sm sm:text-base md:text-lg lg:text-xl; }
 @utility txt { @apply dark:text-white; font-family: "Gilroy-Light", sans-serif; }
 @utility txt-bold { @apply txt; font-family: "Gilroy-ExtraBold", sans-serif !important; }
@@ -43,6 +46,8 @@ body { @apply dark:bg-neutral-900 dark:text-white; }
 @utility btn-base { @apply transition duration-200 cursor-pointer dark:text-white; }
 .btn-sm { @apply rounded px-4 py-2 btn-base; }
 .btn { @apply rounded-lg px-8 py-6 btn-base; }
+.btn-card-content { @apply p-8; }
+.btn-card { @apply rounded-lg overflow-hidden btn-base; }
 .btn-lg { @apply rounded-xl px-16 py-12 btn-base; }
 .btn-neutral { @apply bg-neutral-300 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 hover:shadow-lg; }
 .btn-neutral-disabled { @apply bg-neutral-300 dark:bg-neutral-800 cursor-not-allowed; }
