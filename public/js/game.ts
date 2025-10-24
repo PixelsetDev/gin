@@ -1,7 +1,13 @@
 import {router} from "expo-router";
 import env from "@/env";
 
-export default async function startGame(game: string): Promise<[number, string]> {
+export default async function startGame(game: string): Promise<[number, {
+    mode: number;
+    host: string;
+    packs: [string];
+    players: [string];
+    activities: any[];
+}|string]> {
     if (!game || Object.keys(game).length === 0) {
         alert("Game not found.");
         router.push("/menu");

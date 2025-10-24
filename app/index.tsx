@@ -2,6 +2,7 @@ import {View, Text, ScrollView} from "react-native";
 import {Link, useRouter} from "expo-router";
 import {useEffect, useState} from "react";
 import env from "@/env";
+import DotSpinner from "@/components/dotSpinner";
 
 export default function App() {
     const [Loaded, setLoaded] = useState(0);
@@ -22,7 +23,7 @@ export default function App() {
                 <Text className={`txt-6xl text-white text-center txt-bold`}>Drinko!³</Text>
                 {Loaded === 0?(
                     <Text className="txt-xl text-center">
-                        Loading...
+                        <DotSpinner/>
                     </Text>
                 ): Loaded === 1? (
                     <Text className="txt-xl text-center">
@@ -30,23 +31,20 @@ export default function App() {
                     </Text>
                 ):(
                     <View className={`grid gap-std`}>
-                        <Text className="txt-xl text-center">
-                            Thank you for agreeing to test the latest version of Drinko! Your account should now be
-                            activated and ready to go. If you think of anything at all, no matter how big or small,
-                            if it is a bug/issue you&apos;ve found, design choice you question, or idea you have, we
-                            want to hear about it! Thank you for your time!
-                        </Text>
-                        <Text className="txt-xl text-center bg-rose-600">
-                            Do you have an Android phone? Would you like to test a new app? Let us know! We&apos;re
-                            looking to launch Drinko! on Google Play and need testers to help us make sure our app is
-                            not crap!
+                        <Text className="txt-xl text-center bg-red-700">
+                            This game is currently being tested. It will have bugs and issues. You must be added to the
+                            testing group to be able to play, for access email drinko-testing@pixelset.dev
                         </Text>
                         <Text className="txt-xl text-center">
-                            To contact us about either of the above, email drink-testing@pixelset.dev or DM @letsdrinko
-                            on Instagram. Thank you!
+                            Welcome to Drinko!³, the third edition of the much loved game Drinko!
+                        </Text>
+                        <Text className="txt-xl text-center">
+                            This game is dirty and contains adult themes, don&apos;t play it with your parents. You
+                            must be 18+ to play. This game will get you drunk. Always drink responsibly. When the fun
+                            stops, stop.
                         </Text>
                         <Link href={`/menu`} className={`btn btn-rose txt-xl text-center`}>
-                            Proceed to Drinko!
+                            Let&apos;s go!
                         </Link>
                     </View>
                 )}

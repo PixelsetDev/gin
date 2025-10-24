@@ -48,6 +48,7 @@ body { @apply dark:bg-neutral-900 dark:text-white; }
 .btn-neutral-disabled { @apply bg-neutral-300 dark:bg-neutral-800 cursor-not-allowed; }
 .btn-neutral-active { @apply bg-neutral-200 dark:bg-neutral-800 shadow-lg; }
 .btn-green { @apply bg-green-300 hover:bg-green-200 dark:bg-green-900 dark:hover:bg-green-800 hover:shadow-lg; }
+.btn-red { @apply bg-red-300 hover:bg-red-200 dark:bg-red-900 dark:hover:bg-red-800 hover:shadow-lg; }
 .btn-rose { @apply bg-rose-300 hover:bg-rose-200 dark:bg-rose-900 dark:hover:bg-rose-800 hover:shadow-lg; }
 
 .link-inline { @apply hover:text-rose-500 dark:text-rose-200 underline transition duration-200; }

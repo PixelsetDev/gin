@@ -1,83 +1,18 @@
-import {Pressable, ScrollView, Text, TextInput, View} from "react-native";
+import {Image, Pressable, ScrollView, Text, TextInput, View} from "react-native";
 import {useEffect, useState} from "react";
 import env from "@/env";
 import './../global.css';
 import {Link, router} from "expo-router";
+import {packType} from "@/constants/types";
+import {createGame} from "@/scripts/menu";
 
 export default function App() {
     const [Authenticated, setAuthenticated] = useState(false);
     const [Players, setPlayers] = useState<string[]>([]);
     const [CurrentPlayerInput, setPlayerInput] = useState<string>("");
     const [Display, setDisplay] = useState(0);
-    const [Packs, setPacks] = useState<[{
-        id: number,
-        name: string,
-        description: string,
-        owns: boolean,
-        price: number,
-        status: number
-    } | null]>([null]);
+    const [Packs, setPacks] = useState<packType>([null]);
     const [Mode, setMode] = useState<number>(-1);
-
-    function validatePlayers() {
-        if (Players.length !== 2) {
-            alert("You must have at least 2 players to start.");
-        } else {
-            setDisplay(-1);
-        }
-    }
-
-    function createGame(packID: number) {
-        fetch(`https://${env.API_BASE}/game`, {
-            method: "POST",
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                mode: Mode,
-                packs: [packID],
-                players: Players,
-            })
-        })
-            .then(res => res.json())
-            .then(res => {
-                if (res.code === 401) {
-                    alert(`Your login session may have expired. Please login again (E4/401)`);
-                    router.push("/menu");
-                } else if (res.code === 201) {
-                    let gameCode = res.data;
-                    router.push({
-                        pathname: `/play`,
-                        params: {game: gameCode}
-                    });
-                } else if (res.code === 403) {
-                    alert(`You don't own the pack that you have selected. Please select another pack and try again. (E4/403)`);
-                    console.error(res)
-                } else {
-                    router.push({
-                        pathname: `/error`,
-                        params: {
-                            code: res.code,
-                            error: res.message,
-                            description: "Please try again or contact support for assistance.",
-                            elFile: 'menu.tsx',
-                            elFunc: 'createGame'
-                        }
-                    });
-                }
-            })
-            .catch(err => {
-                router.push({
-                    pathname: `/error`,
-                    params: {
-                        code: err.code,
-                        error: err.message,
-                        description: "Please try again or contact support for assistance.",
-                        elFile: 'menu.tsx',
-                        elFunc: 'createGame'
-                    }
-                });
-            })
-    }
 
     function addPlayer(player: string) {
         if (player.trim() === "") {
@@ -85,6 +20,14 @@ export default function App() {
         } else {
             setPlayers(prevPlayers => [...prevPlayers, player.trim()]);
             setPlayerInput("");
+        }
+    }
+
+    function validatePlayers() {
+        if (Players.length !== 2) {
+            alert("You must have at least 2 players to start.");
+        } else {
+            setDisplay(-1);
         }
     }
 
@@ -222,24 +165,28 @@ export default function App() {
                                             pack.status === 0 ? (
                                                 pack.owns ? (
                                                     <View key={`pack-${pack.id}`} className={`btn btn-neutral-disabled`}>
+                                                        <Image source={{ uri: `https://${env.API_BASE}/${pack.id}.png` }} />
                                                         <Text className={`txt-base txt-bold`}>{pack.name}</Text>
                                                         <Text className={`txt-sm`}>{pack.description}</Text>
                                                         <Text className={`txt-sm italic txt-bold`}>Coming soon. You own this pack on pre-order.</Text>
                                                     </View>
                                                 ) : (
                                                     <View key={`pack-${pack.id}`} className={`btn btn-neutral-disabled`}>
+                                                        <Image source={{ uri: `https://${env.API_BASE}/${pack.id}.png` }} />
                                                         <Text className={`txt-base txt-bold`}>{pack.name}</Text>
                                                         <Text className={`txt-sm`}>{pack.description}</Text>
                                                         <Text className={`txt-sm italic txt-bold`}>Coming soon.</Text>
                                                     </View>
                                                 )
                                             ) : pack.owns ? (
-                                                <Pressable onPress={() => createGame(pack.id)} key={`pack-${pack.id}`} className={`btn btn-green`}>
+                                                <Pressable onPress={() => createGame(pack.id, Mode, Players)} key={`pack-${pack.id}`} className={`btn btn-green`}>
+                                                    <Image source={{ uri: `https://${env.API_BASE}/${pack.id}.png` }} />
                                                     <Text className={`txt-base txt-bold`}>{pack.name}</Text>
                                                     <Text className={`txt-sm`}>{pack.description}</Text>
                                                 </Pressable>
                                             ) : (
                                                 <View key={`pack-${pack.id}`} className={`btn btn-neutral-disabled`}>
+                                                    <Image source={{ uri: `https://${env.API_BASE}/${pack.id}.png` }} />
                                                     <Text className={`txt-base font-bold`}>{pack.name}</Text>
                                                     <Text className={`txt-sm`}>{pack.description}</Text>
                                                     <Text className={`txt-sm italic txt-bold`}>You don&apos;t own this pack.</Text>
