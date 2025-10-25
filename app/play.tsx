@@ -97,11 +97,11 @@ export default function App() {
             fetch(`https://${env.API_BASE}/packs/list`, {method: 'GET', credentials: 'include'})
                 .then((response) => {return response.json();})
                 .then((json) => { if (json.code === 200) { setPacks(json.data); } else { setStatus(-1); } })
-                .catch((err) => { console.error(err); setStatus(-1); });
+                .catch((err) => { setStatus(-1); })
         }
 
         fetchData();
-    }, [game, getNextQuestion]);
+    }, []);
 
     return <View className="h-screen">
         {Status === 1 ? (
