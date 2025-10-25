@@ -5,7 +5,7 @@ export type packType = [{
     name: string,
     description: string,
     owns: boolean,
-    all_owns: boolean,
-    price: number,
-    status: number
+    price_id: number,
+    status: number,
+    "activities": number
 } | null];

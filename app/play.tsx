@@ -1,9 +1,9 @@
 import {View, Text, Pressable} from "react-native";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import startGame from "../public/js/game";
 import {useLocalSearchParams} from "expo-router/build/hooks";
 import DotSpinner from "@/components/dotSpinner";
-import {Link, router} from "expo-router";
+import {Link} from "expo-router";
 import {packType, playerType} from "@/constants/types";
 import env from "@/env";
 
@@ -97,11 +97,11 @@ export default function App() {
             fetch(`https://${env.API_BASE}/packs/list`, {method: 'GET', credentials: 'include'})
                 .then((response) => {return response.json();})
                 .then((json) => { if (json.code === 200) { setPacks(json.data); } else { setStatus(-1); } })
-                .catch((err) => { setStatus(-1); })
+                .catch((err) => { console.error(err); setStatus(-1); });
         }
 
         fetchData();
-    }, []);
+    }, [game, getNextQuestion]);
 
     return <View className="h-screen">
         {Status === 1 ? (

@@ -120,7 +120,7 @@ export default function App() {
                                             elFile: 'menu.tsx',
                                             elFunc: 'render(root)'
                                         }
-                                    });;
+                                    });
                                 }}>
                                     <Text className={`text-center txt-2xl dark:text-white txt-bold`}>Multi-Device</Text>
                                     <Text className={`text-center txt-xl dark:text-white`}>
@@ -162,12 +162,12 @@ export default function App() {
                                 <Text className={`txt-xl text-center txt-bold pt-8 pb-4`}>Your Packs</Text>
                                 <View className={`grid-4 gap-std`}>
                                     {Packs !== null ? (Packs.map(pack =>
-                                        pack !== null && (pack.owns || pack.all_owns) && (
+                                        pack !== null && (pack.owns) && (
                                             <Pressable onPress={() => createGame(pack.id, Mode, Players, pack.status)} key={`pack-${pack.id}`} className={`max-w-72 btn-card btn-neutral`}>
                                                 <Image source={{ uri: `https://${env.API_BASE}/static/pack-icons/${pack.id}.png` }} className={`w-full h-32`} />
-                                                { pack.all_owns && pack.status === 0 ? (
+                                                { pack.owns && pack.status === 0 ? (
                                                     <Text className={`bg-yellow-600 text-white text-center py-1 txt-sm`}>Coming Soon (Free pack)</Text>
-                                                ) : pack.all_owns && pack.status === 1 ? (
+                                                ) : pack.price_id === null && pack.status === 1 ? (
                                                     <Text className={`bg-green-700 text-white text-center py-1 txt-sm`}>Free pack</Text>
                                                 ) : pack.status === 0 ? (
                                                     <Text className={`bg-yellow-600 text-white text-center py-1 txt-sm`}>Coming Soon (Pre-ordered)</Text>
@@ -178,6 +178,9 @@ export default function App() {
                                                     <Text className={`txt-base txt-bold text-center`}>{pack.name}</Text>
                                                     <Text className={`txt-sm text-center`}>{pack.description}</Text>
                                                 </View>
+                                                {pack.status === 1 && (
+                                                    <Text className={`absolute top-2 right-2 text-white bg-black/50 p-2`}>{pack.activities}</Text>
+                                                )}
                                             </Pressable>
                                         )
                                     )) : (
@@ -189,8 +192,8 @@ export default function App() {
                                     <Text className={`txt-xl text-center txt-bold pb-4`}>Looking for more?</Text>
                                     <View className={`flex-row gap-std overflow-x-scroll px-4`}>
                                         {Packs !== null ? (Packs.map(pack =>
-                                            pack !== null && (!pack.owns && !pack.all_owns) && (
-                                                <Pressable onPress={() => createGame(pack.id, Mode, Players, pack.status)} key={`pack-${pack.id}`} className={`mb-4 max-w-72 btn-card btn-neutral`}>
+                                            pack !== null && (!pack.owns) && (
+                                                <Pressable onPress={() => createGame(pack.id, Mode, Players, pack.status)} key={`pack-${pack.id}`} className={`mb-4 max-w-72 btn-card btn-neutral relative`}>
                                                     <Image source={{ uri: `https://${env.API_BASE}/static/pack-icons/${pack.id}.png` }} className={`w-full h-32`} />
                                                     {pack.status === 0 ? (
                                                         <Text className={`bg-yellow-600 text-white text-center py-1 txt-sm`}>Coming soon</Text>
@@ -201,6 +204,9 @@ export default function App() {
                                                         <Text className={`txt-sm txt-bold text-center`}>{pack.name}</Text>
                                                         <Text className={`txt-xs text-center`}>{pack.description}</Text>
                                                     </View>
+                                                    {pack.status === 1 && (
+                                                        <Text className={`absolute top-2 right-2 text-white bg-black/50 p-2`}>{pack.activities}</Text>
+                                                    )}
                                                 </Pressable>
                                             )
                                         )) : (
