@@ -21,6 +21,7 @@ body { @apply bg-neutral-900 text-white; }
 .grid-2 { @apply grid grid-cols-2 }
 .span-2 { @apply col-span-2 }
 .grid-3 { @apply grid grid-cols-2 md:grid-cols-3 }
+.grid-4 { @apply grid grid-cols-2 md:grid-cols-3 }
 .grid-5 { @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 }
 .span-5 { @apply col-span-2 md:col-span-3 lg:col-span-4 xl:col-span-5 }
 
