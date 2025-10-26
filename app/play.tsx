@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import startGame from "../public/js/game";
 import {useLocalSearchParams} from "expo-router/build/hooks";
 import DotSpinner from "@/components/dotSpinner";
-import {Link} from "expo-router";
+import {Link, router} from "expo-router";
 import {packType, playerType} from "@/constants/types";
 import env from "@/env";
 
@@ -17,7 +17,6 @@ export default function App() {
     const [Packs, setPacks] = useState<packType>([null]);
 
     const [GameMode, setGameMode] = useState<number>(0);
-    const [GamePacks, setGamePacks] = useState<[string]>([""]);
     const [Activities, setActivities] = useState<any[]>([null]);
 
     const [CurrentPack, setCurrentPack] = useState<number>(0);
@@ -78,7 +77,6 @@ export default function App() {
 
             if (gameData[0] === 1 && typeof gameData[1] !== "string") {
                 setGameMode(gameData[1].mode);
-                setGamePacks(gameData[1].packs);
                 let players: playerType = [];
                 for (let i in gameData[1].players) {
                     players[i] = {name: gameData[1].players[i], turns: 0, sips: 0}
@@ -106,17 +104,17 @@ export default function App() {
     return <View className="h-screen">
         {Status === 1 ? (
             <View className={`h-screen`}>
-                <View className="absolute top-0 left-0 bg-neutral-100 dark:bg-black px-2 py-1 rounded-br-lg">
-                    <Text className={`dark:text-white`}>Drinko!³</Text>
+                <View className="absolute top-0 left-0 bg-black px-2 py-1 rounded-br-lg">
+                    <Text className={`text-white txt-sm`}>Drinko!³</Text>
                 </View>
-                <View className="absolute top-0 right-[30%] left-[30%] lg:right-[40%] lg:left-[40%] text-center bg-neutral-100 dark:bg-black px-2 py-1 rounded-b-lg">
-                    <Text className={`dark:text-white text-center`}>
+                <View className="absolute top-0 right-[30%] left-[30%] lg:right-[40%] lg:left-[40%] text-center bg-black px-2 py-1 rounded-b-lg">
+                    <Text className={`text-white text-center txt-sm`}>
                         {Packs.length > 0 ? getPack(CurrentPack) : "Loading..."}
                     </Text>
                 </View>
-                <Link className="absolute top-0 right-0 bg-neutral-100 dark:bg-black px-2 py-1 rounded-bl-lg" href={`/menu`}>
-                    <Text className={`dark:text-white`}>X</Text>
-                </Link>
+                <Pressable className="absolute top-0 right-0 bg-black px-2 py-1 rounded-bl-lg z-50" onPress={() => router.push('/menu')}>
+                    <Text className={`text-white txt-sm`}>&#9208;</Text>
+                </Pressable>
                 <View className={`grid-1 gap-std padding`}>
                     <View className={`lg:py-8 py-16`}></View>
                     <View>
@@ -134,17 +132,13 @@ export default function App() {
                             })
                         }
                     </View>
-                    {
-                        Activities[CurrentActivity].skip && (
-                            <Pressable className={`link-inline`} onPress={() => {getNextQuestion(false)}}>
-                                <Text className={`dark:text-white text-center txt-sm`}>Skip</Text>
-                            </Pressable>
-                        )
-                    }
+                    <Pressable className={`link-inline`} onPress={() => {getNextQuestion(false)}}>
+                        <Text className={`text-white text-center txt-sm`}>Skip</Text>
+                    </Pressable>
                 </View>
-                <View className={`bg-rose-200 dark:bg-rose-950 absolute bottom-0 left-0 right-0 h-8`}>
-                    <View className={`bg-rose-500 h-8`} style={{ width: `${(QuestionCount / Activities.length) * 100}%` }}></View>
-                    <Text className={`absolute bottom-2 left-0 right-0 text-center dark:text-white`}>{QuestionCount}/{TotalQuestions}</Text>
+                <View className={`bg-rose-950 absolute bottom-0 left-0 right-0 h-8`}>
+                    <View className={`bg-rose-500 h-8`} style={{ width: `${(QuestionCount / TotalQuestions) * 100}%` }}></View>
+                    <Text className={`absolute bottom-2 left-0 right-0 text-center text-white`}>{QuestionCount}/{TotalQuestions}</Text>
                 </View>
             </View>
         ) : Status === 0 ? (

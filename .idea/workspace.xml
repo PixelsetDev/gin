@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed50632e-0119-4fe9-aa60-f04e4acf577b" name="Changes" comment="Update dependencies">
+    <list default="true" id="ed50632e-0119-4fe9-aa60-f04e4acf577b" name="Changes" comment="that broke it">
+      <change afterPath="$PROJECT_DIR$/components/PlayersList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/menu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/play.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/play.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/constants/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/constants/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/menu.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/menu.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +146,7 @@
       <workItem from="1760719724421" duration="231000" />
       <workItem from="1760720442168" duration="1030000" />
       <workItem from="1760991649690" duration="21633000" />
-      <workItem from="1761336251887" duration="13293000" />
+      <workItem from="1761336251887" duration="21412000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <option name="closed" value="true" />
@@ -241,7 +244,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761346250733</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Update UI">
+      <option name="closed" value="true" />
+      <created>1761414575231</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1761414575231</updated>
+    </task>
+    <task id="LOCAL-00014" summary="that broke it">
+      <option name="closed" value="true" />
+      <created>1761414604440</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1761414604440</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,19 +282,9 @@
     <MESSAGE value="Gin" />
     <MESSAGE value="Update" />
     <MESSAGE value="Make some minor updates" />
-    <MESSAGE value="Update UI" />
     <MESSAGE value="Update dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update dependencies" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/scripts/menu.ts</url>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Update UI" />
+    <MESSAGE value="that broke it" />
+    <option name="LAST_COMMIT_MESSAGE" value="that broke it" />
   </component>
 </project>

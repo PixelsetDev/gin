@@ -1,19 +1,15 @@
 import env from "@/env";
 import {router} from "expo-router";
+import {singlePackType} from "@/constants/types";
 
-export function createGame(packID: number, Mode: number, Players: string[], Status: number) {
-    if (Status === 0) {
-        alert(`This pack isn't available yet. Please check back later.`);
-        return;
-    }
-
+export function createGame(packs: number[], Mode: number, Players: string[]) {
     fetch(`https://${env.API_BASE}/game`, {
         method: "POST",
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             mode: Mode,
-            packs: [packID],
+            packs: packs,
             players: Players
         })
     })
