@@ -186,6 +186,12 @@ export default function App() {
                                 <PlayersList players={Players}/>
 
                                 <Text className={`txt-xl text-center pt-8 pb-4`}>Your Packs</Text>
+                                <Text className={`alert-blue alert-text-blue txt-bold txt-sm text-center`}>
+                                    I&apos;m still importing activities from earlier games alongside creating new
+                                    activities. The available activity pool will likely increase quite a bit throughout
+                                    the week. You can also pick more than one pack at once to increase game length in
+                                    the meantime if you wish.
+                                </Text>
                                 <View className={`grid-5 gap-std`}>
                                     {Packs !== null ? (Packs.map(pack =>
                                         pack !== null && pack.owns && (

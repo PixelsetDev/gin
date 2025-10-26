@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed50632e-0119-4fe9-aa60-f04e4acf577b" name="Changes" comment="grid-3">
+    <list default="true" id="ed50632e-0119-4fe9-aa60-f04e4acf577b" name="Changes" comment="Grid-4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/menu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/env.js" beforeDir="false" afterPath="$PROJECT_DIR$/env.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/global.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +143,7 @@
       <workItem from="1760720442168" duration="1030000" />
       <workItem from="1760991649690" duration="21633000" />
       <workItem from="1761336251887" duration="24592000" />
-      <workItem from="1761509636043" duration="1870000" />
+      <workItem from="1761509636043" duration="2584000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <option name="closed" value="true" />
@@ -297,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761509729594</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Grid-4">
+      <option name="closed" value="true" />
+      <created>1761511749347</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1761511749347</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,6 +334,7 @@
     <MESSAGE value=".idea" />
     <MESSAGE value="Add yellow buttons" />
     <MESSAGE value="grid-3" />
-    <option name="LAST_COMMIT_MESSAGE" value="grid-3" />
+    <MESSAGE value="Grid-4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Grid-4" />
   </component>
 </project>
