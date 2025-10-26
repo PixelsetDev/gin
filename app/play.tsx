@@ -125,7 +125,7 @@ export default function App() {
                     <View className={`py-8`}></View>
                     <View className={`grid-2 gap-std`}>
                         {
-                            Activities[CurrentActivity].responses.content.map(function(item:{t: string, q: number, c: string}, i:number){
+                            Activities[CurrentActivity].responses.map(function(item:{t: string, q: number, c: string}, i:number){
                                 return <Pressable className={`btn-lg btn-${item.c}`} key={i} onPress={() => {getNextQuestion(false)}}>
                                     <Text className={`txt-xl text-center`}>{item.t}</Text>
                                 </Pressable>
