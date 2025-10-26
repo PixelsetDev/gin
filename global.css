@@ -58,6 +58,7 @@ body { @apply bg-neutral-900 text-white; }
 .btn-neutral-active { @apply bg-neutral-800 shadow-lg; }
 .btn-green { @apply bg-green-600 hover:bg-green-500 hover:shadow-lg; }
 .btn-red { @apply bg-red-600 hover:bg-red-500 hover:shadow-lg; }
+.btn-yellow { @apply bg-yellow-600 hover:bg-yellow-500 hover:shadow-lg; }
 .btn-rose { @apply bg-rose-600 hover:bg-rose-500 hover:shadow-lg; }
 
 .link-inline { @apply hover:text-rose-500 text-rose-200 underline transition duration-200; }
