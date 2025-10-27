@@ -169,7 +169,7 @@ export default function App() {
                             })
                         }
                     </View>
-                    <Pressable className={`link-inline`} onPress={() => {getNextQuestion(false)}}>
+                    <Pressable className={`link-inline`} onPress={() => {addSips(Activities[CurrentActivity].skip)}}>
                         <Text className={`text-white text-center txt-sm`}>Skip</Text>
                     </Pressable>
                 </View>
