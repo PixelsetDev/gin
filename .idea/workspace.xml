@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed50632e-0119-4fe9-aa60-f04e4acf577b" name="Changes" comment="Update UI">
+    <list default="true" id="ed50632e-0119-4fe9-aa60-f04e4acf577b" name="Changes" comment="Update images">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/play.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/play.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/android-icon-background.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/android-icon-background.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/android-icon-foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/android-icon-foreground.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/android-icon-monochrome.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/android-icon-monochrome.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/favicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/favicon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/partial-react-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/partial-react-logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/react-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/react-logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/react-logo@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/react-logo@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/react-logo@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/react-logo@3x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/splash-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/splash-icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/game.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,7 +322,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761605868735</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Update images">
+      <option name="closed" value="true" />
+      <created>1761606449679</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1761606449679</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,6 +360,7 @@
     <MESSAGE value="grid-3" />
     <MESSAGE value="Grid-4" />
     <MESSAGE value="Update UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update UI" />
+    <MESSAGE value="Update images" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update images" />
   </component>
 </project>
