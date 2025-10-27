@@ -1,6 +1,6 @@
 import {View, Text, Pressable} from "react-native";
 import {useEffect, useState} from "react";
-import startGame from "../public/js/game";
+import startGame from "@/assets/js/game";
 import {useLocalSearchParams} from "expo-router/build/hooks";
 import DotSpinner from "@/components/dotSpinner";
 import {Link, router} from "expo-router";
