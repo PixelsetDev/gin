@@ -1,5 +1,5 @@
 import {View, Text, ScrollView} from "react-native";
-import {Link, useRouter} from "expo-router";
+import {Link} from "expo-router";
 import {useEffect, useState} from "react";
 import env from "@/env";
 import DotSpinner from "@/components/dotSpinner";
