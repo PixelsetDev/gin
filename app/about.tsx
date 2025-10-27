@@ -1,8 +1,12 @@
 import {ScrollView, Text, View} from "react-native";
 import {Link} from "expo-router";
+import { Helmet } from "react-helmet";
 
 export default function App() {
     return <ScrollView className={`grid-1`}>
+        <Helmet>
+            <title>About Drinko!³</title>
+        </Helmet>
         <View className={`header`}>
             <Text className={`txt-4xl text-white text-center txt-bold`}>About Drinko!³</Text>
             <Link href={`/menu`} className={`txt-xl link-header text-center text-white`}>Back</Link>

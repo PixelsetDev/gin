@@ -6,6 +6,7 @@ import DotSpinner from "@/components/dotSpinner";
 import {Link, router} from "expo-router";
 import {packType, playerType} from "@/constants/types";
 import env from "@/env";
+import {Helmet} from "react-helmet";
 
 let TotalQuestions: number = 0;
 
@@ -13,7 +14,6 @@ export default function App() {
     const game: string = useLocalSearchParams().game.toString();
 
     const [GamePlayers, setGamePlayers] = useState<playerType>([]);
-    const [Leaderboard, setLeaderboard] = useState<[{ player: number, sips: number }]|null>(null);
 
     const [Packs, setPacks] = useState<packType>([null]);
 
@@ -139,6 +139,9 @@ export default function App() {
     }, []);
 
     return <View className="h-screen">
+        <Helmet>
+            <title>Play - Drinko!³</title>
+        </Helmet>
         {Status === 1 ? (
             <View className={`h-screen`}>
                 <View className="absolute top-0 left-0 bg-black px-2 py-1 rounded-br-lg">

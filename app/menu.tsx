@@ -6,6 +6,7 @@ import {Link, router} from "expo-router";
 import {packType, singlePackType} from "@/constants/types";
 import {createGame} from "@/scripts/menu";
 import PlayersList from "@/components/PlayersList";
+import {Helmet} from "react-helmet";
 
 export default function App() {
     const [Authenticated, setAuthenticated] = useState(false);
@@ -116,6 +117,9 @@ export default function App() {
             });
     }, []);
     return <ScrollView className={`grid gap-std`}>
+        <Helmet>
+            <title>Drinko!³</title>
+        </Helmet>
         <View className={`header`}>
             <Text className={`txt-4xl text-white text-center txt-bold`}>Drinko!³</Text>
         </View>

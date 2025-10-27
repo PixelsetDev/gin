@@ -3,6 +3,7 @@ import {Link, useRouter} from "expo-router";
 import {useEffect, useState} from "react";
 import env from "@/env";
 import DotSpinner from "@/components/dotSpinner";
+import {Helmet} from "react-helmet";
 
 export default function App() {
     const [Loaded, setLoaded] = useState(0);
@@ -19,6 +20,9 @@ export default function App() {
 
     return (
         <ScrollView className={`grid gap-std`}>
+            <Helmet>
+                <title>Drinko!³</title>
+            </Helmet>
             <View className={`header fixed top-0 left-0 right-0 bottom-0 txt-bold`}>
                 <Text className={`txt-6xl text-white text-center txt-bold`}>Drinko!³</Text>
                 {Loaded === 0?(

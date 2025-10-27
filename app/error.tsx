@@ -1,10 +1,14 @@
 import {ScrollView, Text, View} from "react-native";
 import {Link} from "expo-router";
 import {useLocalSearchParams} from "expo-router/build/hooks";
+import {Helmet} from "react-helmet";
 
 export default function App() {
     const params = useLocalSearchParams();
     return <ScrollView className={`grid-1`}>
+        <Helmet>
+            <title>Error - Drinko!³</title>
+        </Helmet>
         <View className={`header`}>
             <Text className={`txt-4xl text-white text-center txt-bold`}>Whoops, something went wrong</Text>
             <Link href={`/menu`} className={`txt-xl link-header text-center text-white`}>Back to Drinko!³</Link>
