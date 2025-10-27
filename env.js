@@ -1,5 +1,5 @@
 let env = {
-    API_BASE: 'd3-pre-api.pixelset.dev',
+    API_BASE: 'api.letsdrinko.com',
 };
 
 export default env;
