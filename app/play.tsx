@@ -13,6 +13,7 @@ export default function App() {
     const game: string = useLocalSearchParams().game.toString();
 
     const [GamePlayers, setGamePlayers] = useState<playerType>([]);
+    const [Leaderboard, setLeaderboard] = useState<[{ player: number, sips: number }]|null>(null);
 
     const [Packs, setPacks] = useState<packType>([null]);
 
@@ -71,6 +72,42 @@ export default function App() {
         }
     }
 
+    function addSips(amount: number) {
+        if (amount === -1) {
+            amount = Math.floor(Math.random() * 10) + 1;
+        }
+
+        setGamePlayers(prevPlayers => {
+            const updated = [...prevPlayers];
+
+            if (Activities[CurrentActivity].type === 1) {
+                const player = { ...updated[CurrentPlayer] };
+                player.sips += amount;
+                player.turns += 1;
+                updated[CurrentPlayer] = player;
+            }
+            else if (Activities[CurrentActivity].type === 2) {
+                const player1 = { ...updated[CurrentPlayer] };
+                const player2 = { ...updated[Player2] };
+
+                player1.sips += amount;
+                player1.turns += 1;
+
+                player2.sips += amount;
+                player2.turns += 1;
+
+                updated[CurrentPlayer] = player1;
+                updated[Player2] = player2;
+            }
+
+            return updated;
+        });
+
+        getNextQuestion(false);
+    }
+
+
+
     useEffect(() => {
         async function fetchData() {
             let gameData = await startGame(game);
@@ -126,8 +163,8 @@ export default function App() {
                     <View className={`grid-${Activities[CurrentActivity].responses.length} gap-std`}>
                         {
                             Activities[CurrentActivity].responses.map(function(item:{t: string, q: number, c: string}, i:number){
-                                return <Pressable className={`btn-lg btn-${item.c}`} key={i} onPress={() => {getNextQuestion(false)}}>
-                                    <Text className={`txt-xl text-center`}>{item.t}</Text>
+                                return <Pressable className={`btn-lg btn-${item.c}`} key={i} onPress={() => {addSips(item.q)}}>
+                                    <Text className={`txt-xl text-center`}>{item.t} sips</Text>
                                 </Pressable>
                             })
                         }
@@ -156,7 +193,17 @@ export default function App() {
                 <View className={`lg:py-8 py-24`}></View>
                 <View className={`grid-1 gap-std`}>
                     <Text className={`txt-6xl text-center txt-bold`}>Game over!</Text>
-                    <Text className={`txt-2xl text-center`}>[LEADERBOARD]</Text>
+                    <View className={`grid-1 border-x-2 border-t-2 border-white`}>
+                        {[...GamePlayers]
+                            .sort((a, b) => b.sips - a.sips)
+                            .map((p, i) => (
+                                <View className="border-b-2 border-white grid-2 gap-std px-2 py-1" key={i}>
+                                    <Text className="border-r-2 border-white txt-base px-2 py-1">{p.name}</Text>
+                                    <Text className="txt-base px-2 py-1">{p.sips}</Text>
+                                </View>
+                            ))
+                        }
+                    </View>
                     <View className={`lg:py-8 py-24`}><Text>&nbsp;</Text></View>
                     <Text className={`txt-xl text-center`}><Link href={`/menu`} className={`btn btn-rose`}>Exit</Link></Text>
                 </View>

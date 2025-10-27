@@ -274,24 +274,14 @@ export default function App() {
                                         </View>
                                     </View>
                                 ) : (
-                                    <View>
-                                        {SelectedPacks.length === 1 ? (
-                                            <View className={`grid-2 span-2 gap-std`}>
-                                                <Text className={`alert-green alert-text-green txt-sm text-center`}>
-                                                    Game with {SelectedPacks.length} pack{SelectedPacks.length > 1 && 's'} and {SelectedActivityCount} rounds.
-                                                    Estimated time: {`${Math.floor(SelectedActivityCount*1.25)} minutes ${Math.round(SelectedActivityCount*1.25%1*60).toString().padStart(2,'0')}`} seconds.
-                                                </Text>
-                                                <Text className={`alert-blue alert-text-blue txt-sm text-center`}>
-                                                    You can pick more than one pack if you&apos;d like a longer game.
-                                                    We&apos;ll mix the questions together randomly.
-                                                </Text>
-                                            </View>
-                                        ) : (
-                                            <Text className={`alert-green alert-text-green txt-sm text-center`}>
-                                                Game with {SelectedPacks.length} pack{SelectedPacks.length > 1 && 's'} and {SelectedActivityCount} rounds.
-                                                Estimated time: {`${Math.floor(SelectedActivityCount*1.25)} minutes ${Math.round(SelectedActivityCount*1.25%1*60).toString().padStart(2,'0')}`} seconds.
-                                            </Text>
-                                        )}
+                                    <View className={`grid-1 gap-std`}>
+                                        <Text className={`alert-green alert-text-green txt-sm text-center`}>
+                                            Game with {SelectedPacks.length} pack{SelectedPacks.length > 1 && 's'} and {SelectedActivityCount} rounds.
+                                            Estimated time: {(() => {let m=Math.round(SelectedActivityCount*1.25),h=Math.floor(m/60); return [h?h+' '+(h===1?'hour':'hours'):null, m%60?m%60+' '+((m%60)===1?'minute':'minutes'):null].filter(Boolean).join(' ');})()}.
+                                            {SelectedPacks.length === 1 && (
+                                                <Text className={`block italic`}>You can pick more than one pack if you&apos;d like a longer game.</Text>
+                                            )}
+                                        </Text>
                                         <View className={`flex-row pt-8 gap-std`}>
                                             <Pressable onPress={() => setDisplay(1)} className={`btn btn-red`}>
                                                 <Text className={`txt-sm text-center`}>&lt; Go back</Text>
