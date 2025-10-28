@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "gin",
-    "slug": "gin",
-    "version": "1.0.0",
+    "name": "Drinko!³",
+    "slug": "drinko",
+    "version": "3.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "gin",
+    "icon": "./assets/imagnes/icon.png",
+    "scheme": "drinko",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
