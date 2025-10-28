@@ -7,6 +7,7 @@ import {Link, router} from "expo-router";
 import {packType, playerType} from "@/constants/types";
 import env from "@/env";
 import {Helmet} from "react-helmet";
+import PlayersList from "@/components/PlayersList";
 
 let TotalQuestions: number = 0;
 
@@ -152,7 +153,7 @@ export default function App() {
                         {Packs.length > 0 ? getPack(CurrentPack) : "Loading..."}
                     </Text>
                 </View>
-                <Pressable className="absolute top-0 right-0 bg-black px-2 py-1 rounded-bl-lg z-50" onPress={() => router.push('/menu')}>
+                <Pressable className="absolute top-0 right-0 bg-black px-2 py-1 rounded-bl-lg z-50" onPress={() => setStatus(100)}>
                     <Text className={`text-white txt-sm`}>&#9208;</Text>
                 </Pressable>
                 <View className={`grid-1 gap-std padding`}>
@@ -209,6 +210,32 @@ export default function App() {
                     </View>
                     <View className={`lg:py-8 py-24`}><Text>&nbsp;</Text></View>
                     <Text className={`txt-xl text-center`}><Link href={`/menu`} className={`btn btn-rose`}>Exit</Link></Text>
+                </View>
+            </View>
+        ) : Status === 100 ? (
+            <View className={`absolute top-0 left-0 right-0 bottom-0 grid-1 gap-std padding bg-rose-500 text-white`}>
+                <View className={`lg:py-8 py-24`}></View>
+                <View className={`grid-1 gap-std`}>
+                    <Text className={`txt-6xl text-center txt-bold`}>Paused</Text>
+                    <PlayersList players={GamePlayers.map(player => player.name)} />
+                    <View className={`lg:py-8 py-24`}><Text>&nbsp;</Text></View>
+                    <View className={`grid-2 gap-std`}>
+                        <Pressable onPress={() => setStatus(1)} className={`btn btn-green`}><Text className={`txt-xl text-center`}>Resume</Text></Pressable>
+                        <Pressable onPress={() => setStatus(101)} className={`btn btn-rose`}><Text className={`txt-xl text-center`}>Exit</Text></Pressable>
+                    </View>
+                </View>
+            </View>
+        ) : Status === 101 ? (
+            <View className={`absolute top-0 left-0 right-0 bottom-0 grid-1 gap-std padding bg-rose-500 text-white`}>
+                <View className={`lg:py-8 py-24`}></View>
+                <View className={`grid-1 gap-std`}>
+                    <Text className={`txt-6xl text-center txt-bold`}>Are you sure you want to exit?</Text>
+                    <Text className={`txt-xl text-center`}>This will end your game. You cannot resume your progress if you leave.</Text>
+                    <View className={`lg:py-8 py-24`}><Text>&nbsp;</Text></View>
+                    <View className={`grid-2 gap-std`}>
+                        <Link href={`/menu`} className={`btn btn-rose text-center`}><Text className={`txt-xl text-center`}>Yes, exit</Text></Link>
+                        <Pressable onPress={() => setStatus(100)} className={`btn btn-green`}><Text className={`txt-xl text-center`}>No, return</Text></Pressable>
+                    </View>
                 </View>
             </View>
         ) : (
