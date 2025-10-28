@@ -221,7 +221,7 @@ export default function App() {
                     <View className={`lg:py-8 py-24`}><Text>&nbsp;</Text></View>
                     <View className={`grid-2 gap-std`}>
                         <Pressable onPress={() => setStatus(1)} className={`btn btn-green`}><Text className={`txt-xl text-center`}>Resume</Text></Pressable>
-                        <Pressable onPress={() => setStatus(101)} className={`btn btn-rose`}><Text className={`txt-xl text-center`}>Exit</Text></Pressable>
+                        <Pressable onPress={() => setStatus(101)} className={`btn btn-red`}><Text className={`txt-xl text-center`}>End game</Text></Pressable>
                     </View>
                 </View>
             </View>
@@ -229,11 +229,11 @@ export default function App() {
             <View className={`absolute top-0 left-0 right-0 bottom-0 grid-1 gap-std padding bg-rose-500 text-white`}>
                 <View className={`lg:py-8 py-24`}></View>
                 <View className={`grid-1 gap-std`}>
-                    <Text className={`txt-6xl text-center txt-bold`}>Are you sure you want to exit?</Text>
-                    <Text className={`txt-xl text-center`}>This will end your game. You cannot resume your progress if you leave.</Text>
+                    <Text className={`txt-6xl text-center txt-bold`}>Are you sure you want to end the game?</Text>
+                    <Text className={`txt-xl text-center`}>You cannot resume your progress if you leave.</Text>
                     <View className={`lg:py-8 py-24`}><Text>&nbsp;</Text></View>
                     <View className={`grid-2 gap-std`}>
-                        <Link href={`/menu`} className={`btn btn-rose text-center`}><Text className={`txt-xl text-center`}>Yes, exit</Text></Link>
+                        <Pressable onPress={() => setStatus(99)} className={`btn btn-red`}><Text className={`txt-xl text-center`}>Yes, end game</Text></Pressable>
                         <Pressable onPress={() => setStatus(100)} className={`btn btn-green`}><Text className={`txt-xl text-center`}>No, return</Text></Pressable>
                     </View>
                 </View>
