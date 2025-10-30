@@ -2,12 +2,15 @@ import {View, Text, Pressable} from "react-native";
 import {useEffect, useState} from "react";
 import startGame from "../public/js/game";
 import {useLocalSearchParams} from "expo-router/build/hooks";
-import DotSpinner from "@/components/dotSpinner";
-import {Link, router} from "expo-router";
 import {packType, playerType} from "@/constants/types";
 import env from "@/env";
 import {Helmet} from "react-helmet";
-import PlayersList from "@/components/PlayersList";
+import GsError from "@/components/gameScreens/error";
+import {GsPaused, GsPausedConfirm} from "@/components/gameScreens/paused";
+import GsSips from "@/components/gameScreens/sips";
+import GsGameOver from "@/components/gameScreens/gameOver";
+import GsLoading from "@/components/gameScreens/loading";
+import GsActivity from "@/components/gameScreens/activity";
 
 let TotalQuestions: number = 0;
 
@@ -27,6 +30,7 @@ export default function App() {
     const [Player2, setCurrentPlayer2] = useState<number>(0);
 
     const [QuestionCount, setQuestionCount] = useState<number>(0);
+    const [TakingSips, setTakingSips] = useState<{ players: number[], amount: number }>();
 
     const [Status, setStatus] = useState<number>(0);
 
@@ -61,6 +65,8 @@ export default function App() {
             setCurrentActivity(nextActivity);
             setQuestionCount((prev) => prev + 1);
 
+            setStatus(1);
+
             return updatedActivities;
         });
     }
@@ -73,7 +79,9 @@ export default function App() {
         }
     }
 
-    function addSips(amount: number) {
+    function addSips(players: number[], amount: number) {
+        console.log(players,amount);
+        setTakingSips({players: players, amount: amount});
         if (amount === -1) {
             amount = Math.floor(Math.random() * 10) + 1;
         }
@@ -81,33 +89,20 @@ export default function App() {
         setGamePlayers(prevPlayers => {
             const updated = [...prevPlayers];
 
-            if (Activities[CurrentActivity].type === 1) {
-                const player = { ...updated[CurrentPlayer] };
-                player.sips += amount;
-                player.turns += 1;
-                updated[CurrentPlayer] = player;
-            }
-            else if (Activities[CurrentActivity].type === 2) {
-                const player1 = { ...updated[CurrentPlayer] };
-                const player2 = { ...updated[Player2] };
-
-                player1.sips += amount;
-                player1.turns += 1;
-
-                player2.sips += amount;
-                player2.turns += 1;
-
-                updated[CurrentPlayer] = player1;
-                updated[Player2] = player2;
-            }
+            players.forEach(id => {
+                if (updated[id]) {
+                    const player = { ...updated[id] };
+                    player.sips += amount;
+                    player.turns += 1;
+                    updated[id] = player;
+                }
+            });
 
             return updated;
         });
 
-        getNextQuestion(false);
+        setStatus(2);
     }
-
-
 
     useEffect(() => {
         async function fetchData() {
@@ -143,114 +138,57 @@ export default function App() {
         <Helmet>
             <title>Play - Drinko!³</title>
         </Helmet>
-        {Status === 1 ? (
-            <View className={`h-screen`}>
-                <View className="absolute top-0 left-0 bg-black px-2 py-1 rounded-br-lg">
-                    <Text className={`text-white txt-sm`}>Drinko!³</Text>
-                </View>
-                <View className="absolute top-0 right-[30%] left-[30%] lg:right-[40%] lg:left-[40%] text-center bg-black px-2 py-1 rounded-b-lg">
-                    <Text className={`text-white text-center txt-sm`}>
-                        {Packs.length > 0 ? getPack(CurrentPack) : "Loading..."}
-                    </Text>
-                </View>
-                <Pressable className="absolute top-0 right-0 bg-black px-2 py-1 rounded-bl-lg z-50" onPress={() => setStatus(100)}>
-                    <Text className={`text-white txt-sm`}>&#9208;</Text>
-                </Pressable>
-                <View className={`grid-1 gap-std padding`}>
-                    <View className={`lg:py-8 py-16`}></View>
-                    <View>
-                        <Text className={`txt-6xl text-center txt-bold`}>{GamePlayers[CurrentPlayer].name}</Text>
-                        <Text className={`txt-2xl text-center txt-bold`}>{renderedHeading}</Text>
-                        <Text className={`txt-2xl text-center`}>{Activities[CurrentActivity].subheading}</Text>
-                    </View>
-                    <View className={`py-8`}></View>
-                    <View className={`grid-${Activities[CurrentActivity].responses.length} gap-std`}>
-                        {
-                            Activities[CurrentActivity].responses.map(function(item:{t: string, q: number, c: string}, i:number){
-                                return <Pressable className={`btn-lg btn-${item.c}`} key={i} onPress={() => {addSips(item.q)}}>
-                                    <Text className={`txt-xl text-center`}>{item.t} sips</Text>
-                                </Pressable>
-                            })
-                        }
-                    </View>
-                    <Pressable className={`link-inline`} onPress={() => {addSips(Activities[CurrentActivity].skip)}}>
-                        <Text className={`text-white text-center txt-sm`}>Skip</Text>
-                    </Pressable>
-                </View>
-                <View className={`bg-rose-950 absolute bottom-0 left-0 right-0 h-8`}>
-                    <View className={`bg-rose-500 h-8`} style={{ width: `${(QuestionCount / TotalQuestions) * 100}%` }}></View>
-                    <Text className={`absolute bottom-2 left-0 right-0 text-center text-white`}>{QuestionCount}/{TotalQuestions}</Text>
-                </View>
+        <View className={`h-screen`}>
+            <View className="absolute top-0 left-0 bg-black px-2 py-1 rounded-br-lg">
+                <Text className={`text-white txt-sm`}>Drinko!³</Text>
             </View>
-        ) : Status === 0 ? (
-            <View className={`absolute top-0 left-0 right-0 bottom-0 grid-1 gap-std padding bg-rose-500 text-white`}>
-                <View className={`lg:py-8 py-24`}></View>
-                <View className={`grid-1 gap-std`}>
-                    <Text className={`txt-6xl text-center txt-bold`}>Drinko!³</Text>
-                    <Text className={`txt-2xl text-center`}>Loading...</Text>
-                    <View className={`lg:py-8 py-24`}><Text>&nbsp;</Text></View>
-                    <Text className={`txt-2xl text-center`}><DotSpinner/></Text>
-                </View>
+            <View className="absolute top-0 right-[30%] left-[30%] lg:right-[40%] lg:left-[40%] text-center bg-black px-2 py-1 rounded-b-lg">
+                <Text className={`text-white text-center txt-sm`}>
+                    {Packs.length > 0 ? getPack(CurrentPack) : "Loading..."}
+                </Text>
             </View>
-        ) : Status === 99 ? (
-            <View className={`absolute top-0 left-0 right-0 bottom-0 grid-1 gap-std padding bg-rose-500 text-white`}>
-                <View className={`lg:py-8 py-24`}></View>
-                <View className={`grid-1 gap-std`}>
-                    <Text className={`txt-6xl text-center txt-bold`}>Game over!</Text>
-                    <View className={`grid-1 border-x-2 border-t-2 border-white`}>
-                        {[...GamePlayers]
-                            .sort((a, b) => b.sips - a.sips)
-                            .map((p, i) => (
-                                <View className="border-b-2 border-white grid-2 gap-std px-2 py-1" key={i}>
-                                    <Text className="border-r-2 border-white txt-base px-2 py-1">{p.name}</Text>
-                                    <Text className="txt-base px-2 py-1">{p.sips}</Text>
-                                </View>
-                            ))
-                        }
-                    </View>
-                    <View className={`lg:py-8 py-24`}><Text>&nbsp;</Text></View>
-                    <Text className={`txt-xl text-center`}><Link href={`/menu`} className={`btn btn-rose`}>Exit</Link></Text>
-                </View>
+            <Pressable className="absolute top-0 right-0 bg-black px-2 py-1 rounded-bl-lg z-50" onPress={() => setStatus(100)}>
+                <Text className={`text-white txt-sm`}>&#9208;</Text>
+            </Pressable>
+            <View className={`lg:py-8 py-16`}></View>
+            { Status === 0 ? (
+                <GsLoading/>
+            ) : Status === 1 ? (
+                <GsActivity
+                    VarGamePlayers={GamePlayers}
+                    VarCurrentPlayer={CurrentPlayer}
+                    VarPlayer2={Player2}
+                    VarRenderedHeading={renderedHeading}
+                    VarActivities={Activities}
+                    VarCurrentActivity={CurrentActivity}
+                    FunctAddSips={addSips}
+                />
+            ) : Status === 2 ? (
+                <GsSips
+                    VarTakingSips={TakingSips}
+                    VarGamePlayers={GamePlayers}
+                    FunctGetNextQuestion={getNextQuestion}
+                />
+            ) : Status === 99 ? (
+                <GsGameOver
+                    VarGamePlayers={GamePlayers}
+                />
+            ) : Status === 100 ? (
+                <GsPaused
+                    VarGamePlayers={GamePlayers}
+                    FunctSetStatus={setStatus}
+                />
+            ) : Status === 101 ? (
+                <GsPausedConfirm
+                    FunctSetStatus={setStatus}
+                />
+            ) : (
+                <GsError/>
+            )}
+            <View className={`bg-rose-950 absolute bottom-0 left-0 right-0 h-8`}>
+                <View className={`bg-rose-500 h-8`} style={{ width: `${(QuestionCount / TotalQuestions) * 100}%` }}></View>
+                <Text className={`absolute bottom-2 left-0 right-0 text-center text-white`}>{QuestionCount}/{TotalQuestions}</Text>
             </View>
-        ) : Status === 100 ? (
-            <View className={`absolute top-0 left-0 right-0 bottom-0 grid-1 gap-std padding bg-rose-500 text-white`}>
-                <View className={`lg:py-8 py-24`}></View>
-                <View className={`grid-1 gap-std`}>
-                    <Text className={`txt-6xl text-center txt-bold`}>Paused</Text>
-                    <PlayersList players={GamePlayers.map(player => player.name)} />
-                    <View className={`lg:py-8 py-24`}><Text>&nbsp;</Text></View>
-                    <View className={`grid-2 gap-std`}>
-                        <Pressable onPress={() => setStatus(1)} className={`btn btn-green`}><Text className={`txt-xl text-center`}>Resume</Text></Pressable>
-                        <Pressable onPress={() => setStatus(101)} className={`btn btn-red`}><Text className={`txt-xl text-center`}>End game</Text></Pressable>
-                    </View>
-                </View>
-            </View>
-        ) : Status === 101 ? (
-            <View className={`absolute top-0 left-0 right-0 bottom-0 grid-1 gap-std padding bg-rose-500 text-white`}>
-                <View className={`lg:py-8 py-24`}></View>
-                <View className={`grid-1 gap-std`}>
-                    <Text className={`txt-6xl text-center txt-bold`}>Are you sure you want to end the game?</Text>
-                    <Text className={`txt-xl text-center`}>You cannot resume your progress if you leave.</Text>
-                    <View className={`lg:py-8 py-24`}><Text>&nbsp;</Text></View>
-                    <View className={`grid-2 gap-std`}>
-                        <Pressable onPress={() => setStatus(99)} className={`btn btn-red`}><Text className={`txt-xl text-center`}>Yes, end game</Text></Pressable>
-                        <Pressable onPress={() => setStatus(100)} className={`btn btn-green`}><Text className={`txt-xl text-center`}>No, return</Text></Pressable>
-                    </View>
-                </View>
-            </View>
-        ) : (
-            <View className={`absolute top-0 left-0 right-0 bottom-0 grid-1 gap-std padding bg-rose-500 text-white`}>
-                <View className={`py-8`}></View>
-                <View className={`grid-1 gap-std`}>
-                    <Text className={`txt-6xl text-center txt-bold`}>Error</Text>
-                    <Text className={`txt-2xl text-center`}>x</Text>
-                    <View className={`py-8`}><Text>&nbsp;</Text></View>
-                    <View className={`grid-2 gap-std`}>
-                        <Link className={`btn btn-rose txt-xl text-center`} href={`/menu`}>Exit</Link>
-                        <Link className={`btn btn-rose txt-xl text-center`} href={`/help`}>Contact Support</Link>
-                    </View>
-                </View>
-            </View>
-        )}
+        </View>
     </View>;
 }

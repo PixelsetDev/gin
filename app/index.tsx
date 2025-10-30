@@ -1,4 +1,4 @@
-import {View, Text, ScrollView} from "react-native";
+import {View, Text, ScrollView, Image} from "react-native";
 import {Link} from "expo-router";
 import {useEffect, useState} from "react";
 import env from "@/env";
@@ -35,14 +35,14 @@ export default function App() {
                     </Text>
                 ):(
                     <View className={`grid gap-std`}>
-                        <Text className="txt-xl text-center bg-red-700">
+                        <Text className="txt-base text-center">
+                            Welcome to Drinko!³, the third edition of the much loved game Drinko!
+                        </Text>
+                        <Text className="txt-base text-center bg-red-700">
                             This game is currently being tested. It will have bugs and issues. You must be added to the
                             testing group to be able to play, for access email drinko-testing@pixelset.dev
                         </Text>
-                        <Text className="txt-xl text-center">
-                            Welcome to Drinko!³, the third edition of the much loved game Drinko!
-                        </Text>
-                        <Text className="txt-xl text-center">
+                        <Text className="txt-base text-center">
                             This game is dirty and contains adult themes, don&apos;t play it with your parents. You
                             must be 18+ to play. This game will get you drunk. Always drink responsibly. When the fun
                             stops, stop.
@@ -50,6 +50,12 @@ export default function App() {
                         <Link href={`/menu`} className={`btn btn-rose txt-xl text-center`}>
                             Let&apos;s go!
                         </Link>
+                        <View className={`flex-row mt-24`}>
+                            <View className={`flex-grow`}></View>
+                            <Text className="txt-xs self-center h-5">Made with love by </Text>
+                            <Image source={{uri:'https://brand.pixelset.dev/pixelset/Logo-light.svg'}} className={`w-3 h-5 self-center`}/>
+                            <View className={`flex-grow`}></View>
+                        </View>
                     </View>
                 )}
             </View>

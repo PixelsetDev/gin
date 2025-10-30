@@ -331,8 +331,15 @@ export default function App() {
                 <Link href={`/about`} className={`link-inline`}>About Drinko!</Link>
                 <Text> - </Text>
                 <Link href={`/old`} className={`link-inline`}>Play Classic Drinko!</Link>
+                <Text> - </Text>
+                <Link href={`/old`} className={`link-inline`}>Drinko! Store</Link>
+                <Text> - </Text>
+                <Link href={`https://pixelset.dev/legal/terms/?s=drinko`} className={`link-inline`}>Terms and Conditions</Link>
+                <Text> - </Text>
+                <Link href={`https://pixelset.dev/legal/privacy/?s=drinko`} className={`link-inline`}>Privacy Policy</Link>
                 <View className={`flex-grow`}></View>
             </View>
+            <Image source={{uri:'https://brand.pixelset.dev/pixelset/Logo-light.svg'}} className={`w-6 h-10 mx-auto`}/>
         </View>
     </ScrollView>;
 }

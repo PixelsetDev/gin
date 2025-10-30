@@ -5,6 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed50632e-0119-4fe9-aa60-f04e4acf577b" name="Changes" comment="Pause menu">
+      <change afterPath="$PROJECT_DIR$/components/gameScreens/activity.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/gameScreens/error.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/gameScreens/gameOver.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/gameScreens/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/gameScreens/paused.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/gameScreens/sips.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/menu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/play.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/play.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/env.js" beforeDir="false" afterPath="$PROJECT_DIR$/env.js" afterDir="false" />
     </list>
@@ -56,7 +65,7 @@
     "git-widget-placeholder": "main",
     "javascript.nodejs.core.library.configured.version": "22.20.0",
     "javascript.nodejs.core.library.typings.version": "22.18.11",
-    "last_opened_file_path": "/Users/lewis/NoCloud/drinko3/assets/images",
+    "last_opened_file_path": "/Users/lewis/NoCloud/drinko3/components/gameScreens",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -75,11 +84,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/gameScreens" />
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/public/images" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/public/fonts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
@@ -171,7 +180,9 @@
       <workItem from="1761336251887" duration="24592000" />
       <workItem from="1761509636043" duration="6060000" />
       <workItem from="1761603214089" duration="2015000" />
-      <workItem from="1761685857835" duration="5308000" />
+      <workItem from="1761685857835" duration="5936000" />
+      <workItem from="1761778450417" duration="4828000" />
+      <workItem from="1761857785810" duration="5575000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <option name="closed" value="true" />
@@ -413,7 +424,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761691587107</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Pause menu">
+      <option name="closed" value="true" />
+      <created>1761691645343</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1761691645343</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
